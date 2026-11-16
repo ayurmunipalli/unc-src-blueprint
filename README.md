@@ -1,6 +1,6 @@
 # SRC Blueprint
 
-An interactive, blueprint-style guide to the UNC Student Recreation Center (SRC): a bird's-eye floor plan of both floors with every machine drawn from above, what each machine works, form cues and a how-to video, a muscle-group planner, pre-loaded training splits, and an estimated busy-hours chart. Works on desktop and phones.
+An interactive, blueprint-style guide to the UNC Student Recreation Center (SRC): a bird's-eye floor plan of both floors with every machine drawn from above, what each machine works, form cues and a how-to video, a muscle-group planner, pre-loaded training splits, and an busy-hours chart from Google Popular Times. Works on desktop and phones.
 
 Open `index.html` in a browser (it loads React 18 from cdnjs and fonts from Google Fonts).
 
@@ -28,5 +28,5 @@ python3 build/ds_sync.py
 
 - **Floor plan:** walls, zones and station positions are hand-traced from SRC sheets E1/E2 (UNC Facilities Services) plus on-site corrections. Positions are approximate; the map says so in its title block.
 - **Muscles and form cues:** general exercise knowledge, not SRC-specific guidance.
-- **Busy hours are an estimate.** Google's Popular Times isn't available to outside apps, so the chart shows a typical campus-gym pattern, clearly labeled as an estimate. Replace `BUSY` in `build/app.tpl.html` if real counts become available.
+- **Busy hours come from Google Popular Times** for UNC Student Recreation Center (typical week, not live), read by hand from Google Search on 16 Nov 2026. To refresh, re-read the chart and replace `BUSY` in `build/app.tpl.html`.
 - The Floor 1 free-weight bench count (×~6) is approximate.

@@ -30,7 +30,7 @@ The design system for the SRC gym guide — a web app that helps UNC students se
 2. **Click a machine** → it fills `highlight` and the `MachineCard` opens (muscles, how-to cues, 9:16 YouTube Short slot).
 3. **Planner** → `GoalPicker` asks what to train; chosen muscles turn matching markers `accent` and dim the rest to `opacity-dim`. Results list as `ExerciseRow`s with *Find on map*.
 4. **Splits** → `SplitCard`s for Push/Pull/Legs, Arnold, Upper/Lower, Full Body and Bro Split.
-5. **When to go** → `BusyHours` shows an *estimated* busy-hours chart; it is always flagged as an estimate.
+5. **When to go** → `BusyHours` shows Google Popular Times for the SRC (typical week, read 16 Nov 2026), flagged *From Google* with the date.
 
 ## On phones
 

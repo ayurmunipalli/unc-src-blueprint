@@ -194,13 +194,13 @@ a.vid:hover .vframe { border-color: var(--highlight); color: var(--highlight); }
 .busy-now { display: flex; align-items: center; gap: 8px; font-size: 14px; line-height: 20px; min-height: 20px; margin-bottom: var(--s2); }
 .busy-now .dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--highlight); flex: none; }
 .busy-now b { color: var(--highlight); font-weight: 600; }
-.bars { position: relative; display: grid; grid-template-columns: repeat(18, minmax(0, 1fr)); gap: 3px; align-items: end; height: 112px; border-bottom: 1px solid var(--line);
+.bars { position: relative; display: grid; grid-template-columns: repeat(17, minmax(0, 1fr)); gap: 3px; align-items: end; height: 112px; border-bottom: 1px solid var(--line);
   background: linear-gradient(var(--grid-major), var(--grid-major)) 0 33.3% / 100% 1px no-repeat, linear-gradient(var(--grid-major), var(--grid-major)) 0 66.6% / 100% 1px no-repeat; }
 .bar { border: 0; padding: 0; background: var(--line); opacity: .5; border-radius: 3px 3px 0 0; cursor: pointer; min-height: 4px; }
 .bar:hover, .bar.is-pick { opacity: 1; }
 .bar.is-now { background: var(--highlight); opacity: 1; }
 .bar:focus-visible { outline-offset: 1px; }
-.bars-x { display: grid; grid-template-columns: repeat(18, minmax(0, 1fr)); gap: 3px; margin-top: 4px; font: 400 11px/14px var(--font-mono); color: var(--ink-muted); }
+.bars-x { display: grid; grid-template-columns: repeat(17, minmax(0, 1fr)); gap: 3px; margin-top: 4px; font: 400 11px/14px var(--font-mono); color: var(--ink-muted); }
 .bars-x span { white-space: nowrap; }
 .busy-pick { font-size: 13px; line-height: 18px; color: var(--ink-muted); margin-top: var(--s2); min-height: 18px; }
 .busy-pick b { color: var(--ink); font-weight: 600; }
@@ -515,22 +515,23 @@ function StationRow(p) {
 }
 
 
-/* ---------- Busy hours (estimate) ----------
-   Google's Popular Times isn't available to outside apps, so these bars are an ESTIMATE of a typical
-   campus-gym week (quiet early, after-class peak around 5–7p, earlier and flatter weekends).
-   Not measured at the SRC. Index 0 = 6a … 17 = 11p. Swap BUSY for real counts if the SRC publishes them. */
-var BUSY_HOURS = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
-var WEEKDAY = [20, 28, 32, 35, 38, 45, 52, 48, 45, 55, 72, 88, 92, 80, 65, 48, 32, 18];
-function scaleRow(a, f) { return a.map(function (v) { return Math.round(Math.min(100, v * f)); }); }
+/* ---------- Busy hours (from Google) ----------
+   Google Popular Times for "UNC Student Recreation Center" (typical week, not live), read from Google Search
+   on 16 Nov 2026. Bar heights are relative to the busiest hour of the week (Mon 6p = 100). 0 = closed or no data.
+   Index 0 = 6a … 16 = 10p. Re-read and replace BUSY to refresh. */
+var BUSY_HOURS = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
 var BUSY = {
-  Mon: scaleRow(WEEKDAY, 1.06), Tue: WEEKDAY.slice(), Wed: scaleRow(WEEKDAY, 1.02), Thu: scaleRow(WEEKDAY, .94),
-  Fri: [18, 25, 30, 33, 36, 42, 48, 45, 42, 48, 58, 62, 55, 42, 30, 20, 12, 6],
-  Sat: [6, 10, 18, 30, 45, 58, 66, 70, 68, 62, 52, 42, 32, 22, 14, 8, 4, 2],
-  Sun: [4, 8, 14, 22, 34, 48, 60, 68, 72, 70, 64, 58, 50, 40, 30, 20, 10, 4]
+  Mon: [37, 43, 52, 55, 50, 68, 82, 69, 65, 60, 79, 97, 100, 76, 49, 31, 31],
+  Tue: [50, 46, 50, 50, 60, 59, 57, 47, 53, 57, 71, 81, 88, 85, 71, 52, 44],
+  Wed: [53, 57, 65, 68, 55, 52, 43, 46, 42, 53, 68, 98, 92, 76, 52, 44, 39],
+  Thu: [36, 55, 52, 49, 31, 37, 42, 46, 40, 46, 55, 72, 72, 69, 55, 50, 42],
+  Fri: [42, 42, 42, 37, 39, 30, 28, 30, 37, 53, 63, 60, 50, 30, 21, 0, 0],
+  Sat: [0, 0, 0, 42, 52, 46, 50, 46, 53, 46, 37, 28, 0, 0, 0, 0, 0],
+  Sun: [0, 0, 0, 0, 0, 0, 31, 47, 50, 69, 68, 72, 59, 53, 39, 0, 0]
 };
 var DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 function hourLabel(hh) { return (hh % 12 || 12) + (hh < 12 ? 'a' : 'p'); }
-function busyWord(v) { return v < 30 ? 'Not too busy' : v < 55 ? 'A little busy' : v < 80 ? 'Busy' : 'As busy as it gets'; }
+function busyWord(v) { return v === 0 ? 'Closed or no data' : v < 30 ? 'Not too busy' : v < 55 ? 'A little busy' : v < 80 ? 'Busy' : 'As busy as it gets'; }
 function nowEastern() {
   try {
     var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'short', hour: 'numeric', hour12: false }).formatToParts(new Date());
@@ -541,7 +542,7 @@ function nowEastern() {
 function quietRanges(row) {
   var out = [], start = null;
   for (var i = 0; i <= row.length; i++) {
-    var q = i < row.length && row[i] < 30;
+    var q = i < row.length && row[i] > 0 && row[i] < 30;
     if (q && start === null) start = i;
     if (!q && start !== null) { out.push(hourLabel(BUSY_HOURS[start]) + '–' + hourLabel((BUSY_HOURS[i - 1] + 1) % 24)); start = null; }
   }
@@ -555,14 +556,14 @@ function BusyHours() {
   var shown = pick != null ? pick : nowIdx;
   var quiet = quietRanges(row);
   return h('section', { className: 'box', 'aria-label': 'Busy hours' },
-    h('div', { className: 'card-head' }, h('div', { className: 'eyebrow' }, 'How busy is it?'), h('span', { className: 'flag' }, 'ESTIMATE')),
+    h('div', { className: 'card-head' }, h('div', { className: 'eyebrow' }, 'How busy is it?'), h('span', { className: 'flag' }, 'FROM GOOGLE')),
     h('div', { className: 'busy-days', role: 'group', 'aria-label': 'Day' }, DAYS.map(function (d) {
       return h('button', { key: d, type: 'button', className: 'busy-day', 'aria-pressed': d === day ? 'true' : 'false', onClick: function () { setDay(d); setPick(null); } }, d.toUpperCase());
     })),
     h('div', { className: 'busy-now' }, nowIdx >= 0
-      ? h(Fragment, null, h('span', { className: 'dot' }), h('span', null, h('b', null, 'Now: '), busyWord(row[nowIdx]).toLowerCase() + ', usually'))
-      : h('span', { className: 'lede' }, isToday ? 'Outside the hours shown (6a–11p).' : 'Typical ' + day + ' pattern')),
-    h('div', { className: 'bars', role: 'img', 'aria-label': 'Estimated busyness by hour on ' + day + ', 6 a.m. to 11 p.m.' }, row.map(function (v, i) {
+      ? h(Fragment, null, h('span', { className: 'dot' }), h('span', null, h('b', null, 'Now: '), row[nowIdx] ? busyWord(row[nowIdx]).toLowerCase() + ', usually' : 'closed or no data'))
+      : h('span', { className: 'lede' }, isToday ? 'Outside the hours shown (6a–10p).' : 'Typical ' + day + ' pattern')),
+    h('div', { className: 'bars', role: 'img', 'aria-label': 'Google Popular Times by hour on ' + day + ', 6 a.m. to 10 p.m.' }, row.map(function (v, i) {
       return h('button', { key: i, type: 'button', className: cx('bar', i === nowIdx && 'is-now', i === pick && 'is-pick'), style: { height: Math.max(4, v) + '%' },
         'aria-label': hourLabel(BUSY_HOURS[i]) + ': ' + busyWord(v), onMouseEnter: function () { setPick(i); }, onFocus: function () { setPick(i); }, onClick: function () { setPick(i); } });
     })),
@@ -571,7 +572,7 @@ function BusyHours() {
       ? h(Fragment, null, h('b', null, day + ' ' + hourLabel(BUSY_HOURS[shown])), ' · ' + busyWord(row[shown]))
       : null),
     h('p', { className: 'note' }, (quiet.length ? 'Usually quieter: ' + quiet.join(', ') + '. ' : '') +
-      'Estimated from typical campus-gym traffic, not measured at the SRC and not live. Check SRC hours before you go.')
+      'From Google Popular Times (typical week, not live), read 16 Nov 2026. Check SRC hours before you go.')
   );
 }
 

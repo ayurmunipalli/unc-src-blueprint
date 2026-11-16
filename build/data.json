@@ -1204,9 +1204,9 @@
    "floor": "1",
    "name": "Free-Weight Benches",
    "zone": "free",
-   "x": 850.0,
+   "x": 846.0,
    "y": 300.0,
-   "w": 92.0,
+   "w": 106.0,
    "h": 570.0,
    "count": 6,
    "approxCount": true,
@@ -1220,7 +1220,8 @@
     "Biceps"
    ],
    "kind": "flat_bench",
-   "orient": "h"
+   "orient": "h",
+   "cols": 1
   },
   {
    "id": "L2-01",

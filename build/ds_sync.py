@@ -38,21 +38,21 @@ busy_fn = '''function BusyHours(p) {
     var row = BUSY[day], isToday = day === now.day, nowIdx = isToday ? BUSY_HOURS.indexOf(now.hour) : -1;
     var shown = pick != null ? pick : nowIdx, quiet = quietRanges(row);
     return h('section', { className: 'bp-busy', 'aria-label': 'Busy hours' },
-      h('div', { className: 'bp-busy-head' }, h('div', { className: 'bp-eyebrow' }, 'How busy is it?'), h('span', { className: 'bp-flag' }, 'ESTIMATE')),
+      h('div', { className: 'bp-busy-head' }, h('div', { className: 'bp-eyebrow' }, 'How busy is it?'), h('span', { className: 'bp-flag' }, 'FROM GOOGLE')),
       h('div', { className: 'bp-busy-days', role: 'group', 'aria-label': 'Day' }, DAYS.map(function (d) {
         return h('button', { key: d, type: 'button', className: 'bp-busy-day', 'aria-pressed': d === day ? 'true' : 'false', onClick: function () { setDay(d); setPick(null); } }, d.toUpperCase());
       })),
       h('div', { className: 'bp-busy-now' }, nowIdx >= 0
-        ? h(Fragment, null, h('span', { className: 'bp-busy-dot' }), h('span', null, h('b', null, 'Now: '), busyWord(row[nowIdx]).toLowerCase() + ', usually'))
-        : h('span', { className: 'bp-busy-muted' }, isToday ? 'Outside the hours shown (6a–11p).' : 'Typical ' + day + ' pattern')),
-      h('div', { className: 'bp-bars', role: 'img', 'aria-label': 'Estimated busyness by hour on ' + day + ', 6 a.m. to 11 p.m.' }, row.map(function (v, i) {
+        ? h(Fragment, null, h('span', { className: 'bp-busy-dot' }), h('span', null, h('b', null, 'Now: '), row[nowIdx] ? busyWord(row[nowIdx]).toLowerCase() + ', usually' : 'closed or no data'))
+        : h('span', { className: 'bp-busy-muted' }, isToday ? 'Outside the hours shown (6a–10p).' : 'Typical ' + day + ' pattern')),
+      h('div', { className: 'bp-bars', role: 'img', 'aria-label': 'Google Popular Times by hour on ' + day + ', 6 a.m. to 10 p.m.' }, row.map(function (v, i) {
         return h('button', { key: i, type: 'button', className: cx('bp-bar', i === nowIdx && 'is-now', i === pick && 'is-pick'), style: { height: Math.max(4, v) + '%' },
           'aria-label': hourLabel(BUSY_HOURS[i]) + ': ' + busyWord(v), onMouseEnter: function () { setPick(i); }, onFocus: function () { setPick(i); }, onClick: function () { setPick(i); } });
       })),
       h('div', { className: 'bp-bars-x', 'aria-hidden': 'true' }, BUSY_HOURS.map(function (hh, i) { return h('span', { key: i }, i % 3 === 0 ? hourLabel(hh) : ''); })),
       h('div', { className: 'bp-busy-pick' }, shown >= 0 ? h(Fragment, null, h('b', null, day + ' ' + hourLabel(BUSY_HOURS[shown])), ' · ' + busyWord(row[shown])) : null),
       h('p', { className: 'bp-busy-note' }, (quiet.length ? 'Usually quieter: ' + quiet.join(', ') + '. ' : '') +
-        'Estimated from typical campus-gym traffic, not measured at the SRC and not live. Check SRC hours before you go.')
+        'From Google Popular Times (typical week, not live), read 16 Nov 2026. Check SRC hours before you go.')
     );
   }
 '''
