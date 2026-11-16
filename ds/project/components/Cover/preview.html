@@ -1,0 +1,45 @@
+<!-- @dsCard height=320 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Cover</title>
+<style>
+  body { margin: 0; background: var(--paper); }
+  .cv { position: relative; width: 960px; height: 320px; overflow: hidden; background: var(--paper); }
+  .cv svg { position: absolute; left: 480px; top: 0; }
+  .b-sunk { fill: var(--paper-sunk); } .b-raised { fill: var(--paper-raised); } .b-acc { fill: var(--accent); } .b-hl { fill: var(--highlight); } .b-wall { fill: var(--wall); }
+  .dot { fill: var(--line); } .dot-on { fill: var(--on-accent); }
+  .tile { rx: var(--radius-1); }
+  .txt { position: absolute; left: 40px; bottom: 40px; max-width: 440px; }
+  .nm { font: 600 80px/0.95 var(--font-sans); color: var(--ink); margin: 0; letter-spacing: -0.01em; }
+  .tg { font: 400 14px/20px var(--font-sans); color: var(--ink-muted); margin: 16px 0 0; }
+</style></head>
+<body>
+<div class="cv">
+  <!-- blocks: paper-sunk slab 240×320, accent 200×160, highlight 80×80, paper-raised 200×160, wall strip 40×160 (all multiples of space-6 / 40px)
+       arrangement: flush modular grid bleeding off top and right, like rooms on a floor plan
+       pattern: plus/dot grid at 40px (space-6) — "precise, technical, a drafting grid": the system's ground IS a blueprint grid
+       steps & radii: space-6 pitch, radius-1 on the highlight tile only (machine-marker corner) -->
+  <svg width="480" height="320" viewBox="0 0 480 320">
+    <rect class="b-sunk" x="0" y="0" width="240" height="320"/>
+    <rect class="b-acc" x="240" y="0" width="240" height="160"/>
+    <rect class="b-raised" x="240" y="160" width="200" height="160"/>
+    <rect class="b-wall" x="440" y="160" width="40" height="160"/>
+    <rect class="b-hl tile" x="120" y="200" width="80" height="80"/>
+    <g id="dots"></g>
+  </svg>
+  <div class="txt">
+    <h1 class="nm">SRC Blueprint</h1>
+    <p class="tg">The UNC Student Recreation Center, drawn as a plan you can walk.</p>
+  </div>
+</div>
+<script>
+  var g = document.getElementById('dots'), ns = 'http://www.w3.org/2000/svg';
+  for (var x = 40; x < 480; x += 40) for (var y = 40; y < 320; y += 40) {
+    if (x >= 120 && x <= 200 && y >= 200 && y <= 280) continue;
+    if (x >= 440) continue;
+    var c = document.createElementNS(ns, 'circle'); c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', 2);
+    c.setAttribute('class', (x > 240 && y < 160) ? 'dot-on' : 'dot'); g.appendChild(c);
+  }
+</script>
+</body>
+</html>

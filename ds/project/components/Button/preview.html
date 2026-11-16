@@ -1,0 +1,13 @@
+<!-- @dsCard group="Actions" height=80 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Button — preview</title></head>
+<body>
+<div id="root" class="bp-row"></div>
+<script>
+  var S = window.SRC, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(S.Button, { variant: 'primary' }, 'Show me options'), h(S.Button, null, 'Find on map'), h(S.Button, { variant: 'primary', disabled: true }, 'Show me options')));
+</script>
+</body>
+</html>

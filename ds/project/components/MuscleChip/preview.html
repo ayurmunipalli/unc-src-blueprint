@@ -1,0 +1,14 @@
+<!-- @dsCard group="Planner" height=100 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>MuscleChip — preview</title></head>
+<body>
+<div id="root" class="bp-row"></div>
+<script>
+  var S = window.SRC, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(S.MuscleChip, null, 'Back'), h(S.MuscleChip, { tone: 'secondary' }, 'Biceps'),
+    h(S.MuscleChip, { selected: false, onToggle: function(){} }, 'Chest'), h(S.MuscleChip, { selected: true, onToggle: function(){} }, 'Triceps')));
+</script>
+</body>
+</html>

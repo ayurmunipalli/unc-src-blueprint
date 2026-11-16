@@ -1,0 +1,13 @@
+<!-- @dsCard group="Map" height=1260 width=960 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>FloorPlan — preview</title></head>
+<body>
+<div id="root" style="padding:16px"></div>
+<script>
+  var S = window.SRC, h = React.createElement;
+  function Demo(){ var s = React.useState('L1-08'); return h(S.FloorPlan, { selectedId: s[0], onSelect: function(m){ s[1](m.id); } }); }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+</body>
+</html>

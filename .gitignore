@@ -1,0 +1,5 @@
+.preview/
+.claude/
+.DS_Store
+build/app.js
+build/*.v[0-9]*.*

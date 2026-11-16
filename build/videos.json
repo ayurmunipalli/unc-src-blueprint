@@ -1,0 +1,255 @@
+{
+ "treadmill": {
+  "id": "kr9fHMbztn0",
+  "title": "Treadmill Basics for Beginners | How to Use a Treadmill Safely 🏃‍♀️ #treadmill #planetfitness",
+  "channel": "Emily Elle",
+  "short": true
+ },
+ "bike": {
+  "id": "LDjn1JkNUkQ",
+  "title": "How To Adjust A Spin Bike | Aleks Physio | #shorts",
+  "channel": "Aleks Physio",
+  "short": true
+ },
+ "elliptical": {
+  "id": "dBMotc3AiVc",
+  "title": "ELLIPTICAL TUTORIAL 🏃🏻‍♂️ // Low-impact cardio that uses your full body at Planet Fitness!",
+  "channel": "KevTheTrainer",
+  "short": true
+ },
+ "stairmaster": {
+  "id": "LM9lgFK4mkk",
+  "title": "How to PROPERLY Use The Stair Master Machine",
+  "channel": "Gerardi Performance",
+  "short": true
+ },
+ "arm_bike": {
+  "id": "srTblKIoYOY",
+  "title": "SCIFIT UPPER BODY EXERCISER MACHINE TUTORIAL 🔥 // Perform upper body cardio at Planet Fitness!",
+  "channel": "KevTheTrainer",
+  "short": true
+ },
+ "rower": {
+  "id": "4zWu1yuJ0_g",
+  "title": "Correct Rowing Machine Technique, Improve Your Rowing  | Concept2",
+  "channel": "concept2usa",
+  "short": false
+ },
+ "multi_rig": {
+  "id": "eDP_OOhMTZ4",
+  "title": "The Perfect Pull-Up (FIX THESE!)",
+  "channel": "Andrew Kwong (DeltaBolic)",
+  "short": true
+ },
+ "tires": {
+  "id": "99DLQtHP7jE",
+  "title": "DO THIS, NOT THAT! Med Ball Slams",
+  "channel": "Elevate Sports Performance & Healthcare",
+  "short": true
+ },
+ "chin_dip_assist": {
+  "id": "CdO5BvP6Ti8",
+  "title": "Learn Assisted Pull Ups in 13 Seconds ✅",
+  "channel": "Aakash Wadhwani",
+  "short": true
+ },
+ "shoulder_press_machine": {
+  "id": "6v4nrRVySj0",
+  "title": "✅ The PERFECT Machine Shoulder Press!",
+  "channel": "Andrew Kwong (DeltaBolic)",
+  "short": true
+ },
+ "lat_pulldown": {
+  "id": "hnSqbBk15tw",
+  "title": "Stop Messing Up Your Lat Pulldowns",
+  "channel": "Jeff Nippard",
+  "short": true
+ },
+ "low_row": {
+  "id": "Kh2WA2Y1M0k",
+  "title": "Machine seated row",
+  "channel": "James Gardner Personal Training",
+  "short": true
+ },
+ "chest_press_machine": {
+  "id": "Qu7-ceCvq7w",
+  "title": "The PERFECT Machine Chest Press",
+  "channel": "Andrew Kwong (DeltaBolic)",
+  "short": true
+ },
+ "leg_press": {
+  "id": "nDh_BlnLCGc",
+  "title": "How To Leg Press With Perfect Technique",
+  "channel": "Jeff Nippard",
+  "short": true
+ },
+ "leg_extension": {
+  "id": "iQ92TuvBqRo",
+  "title": "✅ The Perfect Leg Extension",
+  "channel": "Andrew Kwong (DeltaBolic)",
+  "short": true
+ },
+ "seated_leg_curl": {
+  "id": "xdbEG3xGLI8",
+  "title": "✅ The PERFECT Seated Leg Curl Tips",
+  "channel": "Andrew Kwong (DeltaBolic)",
+  "short": true
+ },
+ "pec_fly_rear_delt": {
+  "id": "O2J8Qs7Wl3U",
+  "title": "How to do Reverse Flys for Rear Delts on Pec Deck Fly",
+  "channel": "TylerPath",
+  "short": true
+ },
+ "prone_leg_curl": {
+  "id": "FRy58-v0YII",
+  "title": "Lying Leg Curl Machine settings for Beginners..✅ #gym #fitness #bodybuidling #workout",
+  "channel": "Aakash Wadhwani",
+  "short": true
+ },
+ "cable_pulley": {
+  "id": "hJVbJxClBEw",
+  "title": "Ever wondered how to use the cable machines? We've got you covered! 💪",
+  "channel": "PureGym",
+  "short": true
+ },
+ "long_pull": {
+  "id": "qD1WZ5pSuvk",
+  "title": "Cable Row Form Tips (DO THIS!)",
+  "channel": "Andrew Kwong (DeltaBolic)",
+  "short": true
+ },
+ "iso_row": {
+  "id": "S3vT0sDakE0",
+  "title": "Master Your Iso-Lateral Row | Hammer Strength Technique Breakdown",
+  "channel": "Life Fitness Australia",
+  "short": true
+ },
+ "preacher_curl_machine": {
+  "id": "eYrAV7rnol0",
+  "title": "How to SETUP for machine preacher curl",
+  "channel": "TylerPath",
+  "short": true
+ },
+ "seated_curl_machine": {
+  "id": "XFAYzZgcbSc",
+  "title": "BICEP CURL MACHINE TUTORIAL 💪🏼 // Use this machine to build arm strength! #workout #planetfitness",
+  "channel": "KevTheTrainer",
+  "short": true
+ },
+ "seated_calf": {
+  "id": "S2yhz3klwdU",
+  "title": "Seated calf raise machine demo",
+  "channel": "The Arena Gym",
+  "short": true
+ },
+ "iso_decline": {
+  "id": "r_TE65qSYcA",
+  "title": "Hammer Strength Ms Decline Chest Press Machine (pectoralis major)",
+  "channel": "Fitnesslab",
+  "short": true
+ },
+ "iso_shoulder": {
+  "id": "75S_MnTSyz4",
+  "title": "ISO LATERAL SHOULDER PRESS (How To)",
+  "channel": "Marzrodie",
+  "short": true
+ },
+ "iso_high_row": {
+  "id": "D_fwbrbHgPk",
+  "title": "Hammer Strength High Row Machine (latissimus dorsi, rhomboids, mid traps)",
+  "channel": "Fitnesslab",
+  "short": true
+ },
+ "linear_leg_press": {
+  "id": "PBnh2I0nxmc",
+  "title": "Horizontal Leg Press",
+  "channel": "Patrick Fallis",
+  "short": true
+ },
+ "hack_squat": {
+  "id": "g9i05umL5vc",
+  "title": "How to Hack Squat #beginner #fitnesstip #howto",
+  "channel": "Jeremy Sry",
+  "short": true
+ },
+ "ghr": {
+  "id": "blX1If7ScxY",
+  "title": "How to use the GLUTE HAM RAISE",
+  "channel": "TylerPath",
+  "short": true
+ },
+ "bench_press": {
+  "id": "hWbUlkb5Ms4",
+  "title": "How To Bench Press With Perfect Technique (5 Steps)",
+  "channel": "Jeff Nippard",
+  "short": true
+ },
+ "power_rack": {
+  "id": "dW3zj79xfrc",
+  "title": "✅ The PERFECT Barbell Squat",
+  "channel": "Andrew Kwong (DeltaBolic)",
+  "short": true
+ },
+ "dip_station": {
+  "id": "CrbIq-T-h8I",
+  "title": "✅ Learn the “Perfect” Dip",
+  "channel": "SaturnoMovement",
+  "short": true
+ },
+ "roman_chair": {
+  "id": "EKNRR9cSy9E",
+  "title": "Roman chair back extension!",
+  "channel": "Alex Lueth",
+  "short": true
+ },
+ "dumbbells": {
+  "id": "Y0tHBLzEPE8",
+  "title": "Ultimate Beginner's Full Body Dumbbell Workout! 💪🏼 #beginnerfriendlyworkout",
+  "channel": "Workout With Roxanne",
+  "short": true
+ },
+ "turf_sled": {
+  "id": "Qw8q55JR5VY",
+  "title": "Hyrox sled push technique. #hyrox #technique",
+  "channel": "Juxfit",
+  "short": true
+ },
+ "hip_adductor": {
+  "id": "iPLvw74e7Tk",
+  "title": "HIP ADDUCTOR MACHINE 🦵🏼// Activate those inner thighs. #lowerbodyworkout #planetfitness",
+  "channel": "KevTheTrainer",
+  "short": true
+ },
+ "hip_thrust_machine": {
+  "id": "sxOrVuCvWq4",
+  "title": "The PERFECT Machine Hip Thrust",
+  "channel": "Andrew Kwong (DeltaBolic)",
+  "short": true
+ },
+ "trx": {
+  "id": "W71cXX9vcbc",
+  "title": "Don't know where to starts? Start with the TRX Suspension Trainer",
+  "channel": "TRXtraining",
+  "short": true
+ },
+ "cable_pushdown": {
+  "id": "1FjkhpZsaxc",
+  "title": "The Perfect Triceps Pushdown (DO THIS!)",
+  "channel": "Andrew Kwong (DeltaBolic)",
+  "short": true
+ },
+ "long_pull1": {
+  "id": "qD1WZ5pSuvk",
+  "title": "Cable Row Form Tips (DO THIS!)",
+  "channel": "Andrew Kwong (DeltaBolic)",
+  "short": true
+ },
+ "combo_assist": {
+  "id": "qD1WZ5pSuvk",
+  "title": "Cable Row Form Tips (DO THIS!)",
+  "channel": "Andrew Kwong (DeltaBolic)",
+  "short": true
+ },
+ "flat_bench": null
+}

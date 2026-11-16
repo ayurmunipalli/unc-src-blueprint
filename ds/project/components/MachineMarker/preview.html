@@ -1,0 +1,19 @@
+<!-- @dsCard group="Map" height=330 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>MachineMarker — preview</title></head>
+<body>
+<div id="root" style="padding:16px"></div>
+<script>
+  var S = window.SRC, h = React.createElement;
+  var states = ['idle','hover','active','match','dim'];
+  var row1 = states.map(function(st,i){ var m = Object.assign({}, S.data.byId('L1-08'), { x: 20 + i*112, y: 16, w: 72, h: 52 });
+    return h('g', { key: st }, h(S.MachineMarker, { machine: m, state: st }), h('text', { x: m.x + 36, y: 90, textAnchor: 'middle', className: 'bp-dim' }, st.toUpperCase())); });
+  var picks = [['L1-01','TREADMILL'],['L1-29','BENCH ×4'],['L1-30','RACK ×14'],['L2-11','ROWER ×4'],['L1-11','LEG PRESS'],['L1-23','ISO PRESS'],['L1-16','CABLES ×4'],['L2-08','COMBO STN']];
+  var row2 = picks.map(function(p,i){ var src = S.data.byId(p[0]), col = i % 4, row = Math.floor(i / 4);
+    var w = 124, hh = src.count > 3 ? 70 : 54, m = Object.assign({}, src, { x: 14 + col*142, y: 118 + row*96, w: w, h: hh });
+    return h('g', { key: p[0] }, h(S.MachineMarker, { machine: m }), h('text', { x: m.x + w/2, y: 118 + row*96 + 86, textAnchor: 'middle', className: 'bp-dim' }, p[1])); });
+  ReactDOM.createRoot(document.getElementById('root')).render(h('svg', { viewBox: '0 0 580 310', width: 580, height: 310, style: { maxWidth: '100%', height: 'auto' } }, row1, row2));
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!-- @dsCard group="Planner" height=340 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>SplitCard — preview</title></head>
+<body>
+<div id="root" class="bp-row" style="align-items:stretch"></div>
+<script>
+  var S = window.SRC, h = React.createElement;
+  function Demo(){ var s = React.useState('arnold');
+    return h(React.Fragment, null, S.data.SPLITS.slice(0,3).map(function(sp){ return h(S.SplitCard, { key: sp.id, split: sp, selected: s[0] === sp.id, onSelect: function(){ s[1](sp.id); } }); })); }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+</body>
+</html>
