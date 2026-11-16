@@ -20,8 +20,8 @@ a = app.index('function pullStation('); b = app.index('var G = {')
 helpers = ''.join('  ' + l + '\n' if l.strip() else '\n' for l in app[a:b].rstrip().split('\n'))
 s = sub(s, '  var G = {', helpers + '\n  var G = {')
 gi = s.index('    long_pull: { ar: 1.2,'); ge = s.index('\n', gi)
-kinds = [l for l in app.split('\n') if re.match(r"  (curved_treadmill|long_pull|long_pull1|combo_assist|flat_bench): \{", l)]
-assert len(kinds) == 5
+kinds = [l for l in app.split('\n') if re.match(r"  (curved_treadmill|t_bar_row|long_pull|long_pull1|combo_assist|flat_bench): \{", l)]
+assert len(kinds) == 6
 s = s[:gi] + '\n'.join('  ' + l for l in kinds) + s[ge:]
 
 # 3. approximate counts

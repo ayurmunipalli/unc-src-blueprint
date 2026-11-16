@@ -880,7 +880,7 @@
   {
    "id": "L1-20",
    "floor": "1",
-   "name": "Chest-Supported Biceps Curl",
+   "name": "T-Bar Row",
    "zone": "machines",
    "x": 632.5,
    "y": 477.5,
@@ -888,15 +888,18 @@
    "h": 45.0,
    "count": 1,
    "primary": [
-    "Biceps"
+    "Back"
    ],
-   "secondary": [],
-   "kind": "preacher_curl_machine"
+   "secondary": [
+    "Biceps",
+    "Shoulders"
+   ],
+   "kind": "t_bar_row"
   },
   {
    "id": "L1-21",
    "floor": "1",
-   "name": "Seated Biceps Curl",
+   "name": "Seated Preacher Curl",
    "zone": "machines",
    "x": 732.5,
    "y": 477.5,
@@ -907,7 +910,7 @@
     "Biceps"
    ],
    "secondary": [],
-   "kind": "seated_curl_machine"
+   "kind": "preacher_curl_machine"
   },
   {
    "id": "L1-22",
@@ -1937,6 +1940,11 @@
    "Step on while holding the rails. There's no motor: the belt only moves when you do.",
    "Walk or run near the middle of the curve. Move forward up the curve to speed up, drift back to slow down.",
    "To stop, ease off, step back onto the flat rear section and hold the rails."
+  ],
+  "t_bar_row": [
+   "Load plates on the end of the bar and set the chest pad so you can reach the handles with straight arms.",
+   "Chest on the pad, feet planted; pull the handles toward your stomach, driving your elbows back.",
+   "Squeeze your shoulder blades together, then lower under control without letting the plates crash."
   ]
  },
  "sets": {
@@ -1967,7 +1975,8 @@
   "ghr": "3 × max reps",
   "flat_bench": "3 × 8–12",
   "combo_assist": "3 × 10–12",
-  "curved_treadmill": "10–20 min"
+  "curved_treadmill": "10–20 min",
+  "t_bar_row": "3 × 8–10"
  },
  "splits": [
   {
@@ -2047,13 +2056,13 @@
        "video": null
       },
       {
-       "name": "Chest-Supported Biceps Curl",
+       "name": "T-Bar Row",
        "station": "L1-20",
-       "sets": "3 × 10–12",
+       "sets": "3 × 8–10",
        "video": null
       },
       {
-       "name": "Seated Biceps Curl",
+       "name": "Seated Preacher Curl",
        "station": "L1-21",
        "sets": "2 × 12–15",
        "video": null
@@ -2175,7 +2184,7 @@
        "video": null
       },
       {
-       "name": "Seated Biceps Curl",
+       "name": "Seated Preacher Curl",
        "station": "L1-21",
        "sets": "3 × 10–12",
        "video": null
@@ -2273,8 +2282,8 @@
        "video": null
       },
       {
-       "name": "Chest-Supported Biceps Curl",
-       "station": "L1-20",
+       "name": "Seated Preacher Curl",
+       "station": "L1-21",
        "sets": "2 × 12",
        "video": null
       },
@@ -2469,8 +2478,8 @@
        "video": null
       },
       {
-       "name": "Iso-Lateral Row",
-       "station": "L1-19",
+       "name": "T-Bar Row",
+       "station": "L1-20",
        "sets": "3 × 8–10",
        "video": null
       },
@@ -2523,13 +2532,13 @@
      "focus": "Arms",
      "ex": [
       {
-       "name": "Chest-Supported Biceps Curl",
-       "station": "L1-20",
+       "name": "Cable Curl",
+       "station": "L1-16",
        "sets": "3 × 10–12",
        "video": null
       },
       {
-       "name": "Seated Biceps Curl",
+       "name": "Seated Preacher Curl",
        "station": "L1-21",
        "sets": "3 × 10–12",
        "video": null
