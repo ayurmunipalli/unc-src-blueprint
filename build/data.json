@@ -509,28 +509,6 @@
        704.0
       ]
      ]
-    },
-    {
-     "id": "hall2",
-     "name": "Hall to Lockers",
-     "pts": [
-      [
-       640.0,
-       236.0
-      ],
-      [
-       862.0,
-       236.0
-      ],
-      [
-       862.0,
-       352.0
-      ],
-      [
-       640.0,
-       352.0
-      ]
-     ]
     }
    ]
   }
@@ -1284,10 +1262,10 @@
    "floor": "2",
    "name": "Elliptical",
    "zone": "machines2",
-   "x": 884.4,
-   "y": 275.0,
-   "w": 35.2,
-   "h": 44.0,
+   "x": 890.0,
+   "y": 300.0,
+   "w": 38.0,
+   "h": 84.0,
    "count": 1,
    "primary": [
     "Cardio"
@@ -1303,10 +1281,10 @@
    "floor": "2",
    "name": "Elliptical",
    "zone": "machines2",
-   "x": 1188.0,
-   "y": 94.6,
-   "w": 30.8,
-   "h": 96.8,
+   "x": 1205.0,
+   "y": 100.0,
+   "w": 40.0,
+   "h": 110.0,
    "count": 1,
    "primary": [
     "Cardio"
@@ -1322,10 +1300,10 @@
    "floor": "2",
    "name": "Inner / Outer Thigh",
    "zone": "machines2",
-   "x": 1251.8,
-   "y": 132.0,
-   "w": 48.4,
-   "h": 66.0,
+   "x": 1268.0,
+   "y": 118.0,
+   "w": 56.0,
+   "h": 76.0,
    "count": 1,
    "primary": [
     "Glutes"
@@ -1340,10 +1318,10 @@
    "floor": "2",
    "name": "Angled Leg Press",
    "zone": "machines2",
-   "x": 1258.4,
-   "y": 255.2,
-   "w": 57.2,
-   "h": 39.6,
+   "x": 1272.0,
+   "y": 300.0,
+   "w": 60.0,
+   "h": 44.0,
    "count": 1,
    "primary": [
     "Quads",
@@ -1359,10 +1337,10 @@
    "floor": "2",
    "name": "Hip Thrust (Elite)",
    "zone": "machines2",
-   "x": 1258.4,
-   "y": 332.2,
-   "w": 57.2,
-   "h": 39.6,
+   "x": 1272.0,
+   "y": 370.0,
+   "w": 60.0,
+   "h": 44.0,
    "count": 1,
    "primary": [
     "Glutes"
@@ -1377,10 +1355,10 @@
    "floor": "2",
    "name": "Low Row / Lat Pulldown + 1 Cable",
    "zone": "machines2",
-   "x": 961.4,
-   "y": 352.0,
-   "w": 70.4,
-   "h": 66.0,
+   "x": 950.0,
+   "y": 318.0,
+   "w": 110.0,
+   "h": 104.0,
    "count": 1,
    "primary": [
     "Back"
@@ -1397,10 +1375,10 @@
    "floor": "2",
    "name": "Low Row / Lat Pulldown + Cables + Dip/Chin Assist",
    "zone": "machines2",
-   "x": 1097.8,
-   "y": 352.0,
-   "w": 112.0,
-   "h": 66.0,
+   "x": 1078.0,
+   "y": 318.0,
+   "w": 176.0,
+   "h": 104.0,
    "count": 1,
    "primary": [
     "Back",
@@ -1438,10 +1416,10 @@
    "floor": "2",
    "name": "Erg Rowers",
    "zone": "rowbike",
-   "x": 1359.6,
-   "y": 35.2,
-   "w": 154.0,
-   "h": 52.8,
+   "x": 1372.0,
+   "y": 78.0,
+   "w": 206.0,
+   "h": 74.0,
    "count": 4,
    "primary": [
     "Cardio",
@@ -1451,17 +1429,18 @@
     "Quads",
     "Biceps"
    ],
-   "kind": "rower"
+   "kind": "rower",
+   "cols": 2
   },
   {
    "id": "L2-12",
    "floor": "2",
    "name": "Bikes",
    "zone": "rowbike",
-   "x": 1600.5,
-   "y": 30.8,
-   "w": 209.0,
-   "h": 52.8,
+   "x": 1618.0,
+   "y": 78.0,
+   "w": 196.0,
+   "h": 74.0,
    "count": 4,
    "primary": [
     "Cardio"
@@ -1470,17 +1449,18 @@
     "Quads",
     "Glutes"
    ],
-   "kind": "bike"
+   "kind": "bike",
+   "cols": 4
   },
   {
    "id": "L2-13",
    "floor": "2",
    "name": "TRX Suspension Training Bridge",
    "zone": "trx",
-   "x": 1368.4,
-   "y": 193.6,
-   "w": 440.0,
-   "h": 57.2,
+   "x": 1362.0,
+   "y": 222.0,
+   "w": 456.0,
+   "h": 34.0,
    "count": 1,
    "primary": [
     "Core",
@@ -1620,11 +1600,11 @@
    "floor": "2",
    "name": "Bikes",
    "zone": "cardio200",
-   "x": 396.0,
-   "y": 486.2,
-   "w": 220.0,
-   "h": 39.6,
-   "count": 14,
+   "x": 404.0,
+   "y": 494.0,
+   "w": 196.0,
+   "h": 52.0,
+   "count": 4,
    "primary": [
     "Cardio"
    ],
@@ -1632,7 +1612,8 @@
     "Quads",
     "Glutes"
    ],
-   "kind": "bike"
+   "kind": "bike",
+   "cols": 4
   },
   {
    "id": "L2-21",
@@ -1711,25 +1692,6 @@
     "Calves"
    ],
    "kind": "treadmill"
-  },
-  {
-   "id": "L2-25",
-   "floor": "2",
-   "name": "Elliptical (hallway)",
-   "zone": "hall2",
-   "x": 720.0,
-   "y": 262.0,
-   "w": 33.0,
-   "h": 78.0,
-   "count": 1,
-   "primary": [
-    "Cardio"
-   ],
-   "secondary": [
-    "Quads",
-    "Glutes"
-   ],
-   "kind": "elliptical"
   },
   {
    "id": "L2-26",
