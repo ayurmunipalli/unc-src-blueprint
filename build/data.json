@@ -539,7 +539,7 @@
   {
    "id": "L1-01",
    "floor": "1",
-   "name": "Treadmill",
+   "name": "Curved Manual Treadmill",
    "zone": "machines",
    "x": 202.5,
    "y": 205.0,
@@ -553,7 +553,7 @@
     "Quads",
     "Calves"
    ],
-   "kind": "treadmill"
+   "kind": "curved_treadmill"
   },
   {
    "id": "L1-02",
@@ -577,7 +577,7 @@
   {
    "id": "L1-03",
    "floor": "1",
-   "name": "Treadmill",
+   "name": "Curved Manual Treadmill",
    "zone": "machines",
    "x": 402.5,
    "y": 205.0,
@@ -591,7 +591,7 @@
     "Quads",
     "Calves"
    ],
-   "kind": "treadmill"
+   "kind": "curved_treadmill"
   },
   {
    "id": "L1-04",
@@ -1063,10 +1063,10 @@
    "floor": "1",
    "name": "Bench Press",
    "zone": "bench",
-   "x": 235.0,
-   "y": 852.5,
-   "w": 175.0,
-   "h": 110.0,
+   "x": 225.0,
+   "y": 740.0,
+   "w": 195.0,
+   "h": 235.0,
    "count": 4,
    "primary": [
     "Chest"
@@ -1075,17 +1075,19 @@
     "Triceps",
     "Shoulders"
    ],
-   "kind": "bench_press"
+   "kind": "bench_press",
+   "cols": 2,
+   "flip": true
   },
   {
    "id": "L1-30",
    "floor": "1",
    "name": "Power Racks",
    "zone": "racks",
-   "x": 475.0,
-   "y": 750.0,
-   "w": 325.0,
-   "h": 200.0,
+   "x": 225.0,
+   "y": 735.0,
+   "w": 610.0,
+   "h": 433.0,
    "count": 14,
    "primary": [
     "Quads",
@@ -1097,7 +1099,25 @@
     "Core",
     "Shoulders"
    ],
-   "kind": "power_rack"
+   "kind": "power_rack",
+   "parts": [
+    {
+     "x": 450.0,
+     "y": 735.0,
+     "w": 355.0,
+     "h": 100.0,
+     "count": 6,
+     "cols": 6
+    },
+    {
+     "x": 225.0,
+     "y": 1068.0,
+     "w": 610.0,
+     "h": 100.0,
+     "count": 8,
+     "cols": 8
+    }
+   ]
   },
   {
    "id": "L1-31",
@@ -1228,10 +1248,10 @@
    "floor": "2",
    "name": "Dumbbells & Free Weights",
    "zone": "free2",
-   "x": 906.4,
-   "y": 83.6,
-   "w": 242.0,
-   "h": 132.0,
+   "x": 885.0,
+   "y": 62.0,
+   "w": 290.0,
+   "h": 36.0,
    "count": 1,
    "primary": [
     "Chest",
@@ -1697,6 +1717,30 @@
     "Glutes"
    ],
    "kind": "elliptical"
+  },
+  {
+   "id": "L2-26",
+   "floor": "2",
+   "name": "Free-Weight Benches",
+   "zone": "free2",
+   "x": 885.0,
+   "y": 112.0,
+   "w": 290.0,
+   "h": 136.0,
+   "count": 6,
+   "cols": 6,
+   "orient": "v",
+   "approxCount": true,
+   "primary": [
+    "Chest",
+    "Shoulders"
+   ],
+   "secondary": [
+    "Triceps",
+    "Back",
+    "Biceps"
+   ],
+   "kind": "flat_bench"
   }
  ],
  "cues": {
@@ -1913,6 +1957,11 @@
    "Set the back pad: flat for presses and rows, 30–45° for incline work, upright for seated shoulder presses.",
    "Make sure the pin locks fully before you sit or lie down.",
    "Feet flat, shoulder blades back. Wipe it down and leave it flat for the next person."
+  ],
+  "curved_treadmill": [
+   "Step on while holding the rails. There's no motor: the belt only moves when you do.",
+   "Walk or run near the middle of the curve. Move forward up the curve to speed up, drift back to slow down.",
+   "To stop, ease off, step back onto the flat rear section and hold the rails."
   ]
  },
  "sets": {
@@ -1942,7 +1991,8 @@
   "roman_chair": "3 × max reps",
   "ghr": "3 × max reps",
   "flat_bench": "3 × 8–12",
-  "combo_assist": "3 × 10–12"
+  "combo_assist": "3 × 10–12",
+  "curved_treadmill": "10–20 min"
  },
  "splits": [
   {

@@ -147,7 +147,7 @@
 
   /* tile `n` glyphs inside a box, choosing a grid whose cells match the glyph's proportions */
   ['dumbbells', 'trx', 'multi_rig', 'turf_sled', 'tires'].forEach(function (k) { G[k].stretch = true; });
-  function layout(m, k) {
+  function layoutBox(m, k) {
     var g = G[m.kind] || G.dumbbells, n = m.count || 1, best = null;
     for (var c = m.cols || 1; c <= (m.cols || n); c++) {
       var r = Math.ceil(n / c), cw = m.w / c, ch = m.h / r;
@@ -161,7 +161,16 @@
     }
     return { g: g, cells: cells };
   }
-  function Glyph(cell, g, key, orient) {
+  function layout(m, k) {
+    /* a station may be split into several areas (parts), e.g. a front row and a back row of racks */
+    if (!m.parts) { var one = layoutBox(m, k); one.boxes = [m]; return one; }
+    var out = { g: G[m.kind] || G.dumbbells, cells: [], boxes: [] };
+    m.parts.forEach(function (pt) { var b = Object.assign({}, m, pt, { parts: null }); out.cells = out.cells.concat(layoutBox(b, k).cells); out.boxes.push(b); });
+    return out;
+  }
+  function Glyph(cell, g, key, orient, flip) {
+    /* orient 'v': always draw the long axis top-bottom, centred in the cell (e.g. benches facing a rack to the north) */
+    if (orient === 'v' && cell.h < cell.w * g.ar) { var fw = Math.min(cell.w, cell.h / g.ar); cell = { x: cell.x + (cell.w - fw) / 2, y: cell.y, w: fw, h: cell.h }; }
     /* orient 'h': always draw the long axis left-right, centred in the cell (e.g. benches facing a rack) */
     if (orient === 'h' && cell.w < cell.h * g.ar) { var fh = Math.min(cell.h, cell.w / g.ar); cell = { x: cell.x, y: cell.y + (cell.h - fh) / 2, w: cell.w, h: fh }; }
     if (!g.stretch) {
@@ -171,7 +180,8 @@
     if (nl !== lw || ns !== sw) { var nw = cell.w >= cell.h ? nl : ns, nh = cell.w >= cell.h ? ns : nl; cell = { x: cell.x + (cell.w - nw) / 2, y: cell.y + (cell.h - nh) / 2, w: nw, h: nh }; }
   }
   var land = cell.w >= cell.h, W = land ? cell.w : cell.h, H = land ? cell.h : cell.w;
-    var tf = land ? 'translate(' + cell.x + ' ' + cell.y + ')' : 'translate(' + (cell.x + cell.w) + ' ' + cell.y + ') rotate(90)';
+    var tf = land ? (flip ? 'translate(' + (cell.x + cell.w) + ' ' + (cell.y + cell.h) + ') rotate(180)' : 'translate(' + cell.x + ' ' + cell.y + ')')
+      : (flip ? 'translate(' + cell.x + ' ' + (cell.y + cell.h) + ') rotate(-90)' : 'translate(' + (cell.x + cell.w) + ' ' + cell.y + ') rotate(90)'); /* flip: start of the drawing at the bottom/right instead */
     return h('g', { key: key, transform: tf }, g.d(W, H).map(function (e, i) { return h(e[0], Object.assign({ key: i }, e[1])); }));
   }
 
@@ -184,9 +194,9 @@
       onMouseEnter: p.onEnter, onMouseLeave: p.onLeave, onFocus: p.onEnter, onBlur: p.onLeave, onClick: p.onSelect,
       onKeyDown: function (e) { if ((e.key === 'Enter' || e.key === ' ') && p.onSelect) { e.preventDefault(); p.onSelect(); } }
     },
-      h('rect', { className: 'hit', x: m.x, y: m.y, width: m.w, height: m.h }),
-      h('rect', { className: 'pad', x: m.x - 2 * k, y: m.y - 2 * k, width: m.w + 4 * k, height: m.h + 4 * k }),
-      lay.cells.map(function (c, i) { return Glyph(c, lay.g, i, m.orient); }),
+      lay.boxes.map(function (b, i) { return h('rect', { key: 'h' + i, className: 'hit', x: b.x, y: b.y, width: b.w, height: b.h }); }),
+      lay.boxes.map(function (b, i) { return h('rect', { key: 'p' + i, className: 'pad', x: b.x - 2 * k, y: b.y - 2 * k, width: b.w + 4 * k, height: b.h + 4 * k }); }),
+      lay.cells.map(function (c, i) { return Glyph(c, lay.g, i, m.orient, m.flip); }),
       p.showCode ? h('text', { className: 'lbl', x: m.x + m.w / 2, y: m.y + m.h / 2 + 4 * k, textAnchor: 'middle' }, m.id.slice(-2) + (m.count > 1 ? ' ×' + m.count : '')) : null
     );
   }

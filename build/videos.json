@@ -251,5 +251,11 @@
   "channel": "Andrew Kwong (DeltaBolic)",
   "short": true
  },
- "flat_bench": null
+ "flat_bench": null,
+ "curved_treadmill": {
+  "id": "DJH44Myxnqs",
+  "title": "How to Use the Curve Treadmill",
+  "channel": "Woodway Treadmills",
+  "short": false
+ }
 }
