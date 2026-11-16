@@ -1084,10 +1084,10 @@
    "floor": "1",
    "name": "Power Racks",
    "zone": "racks",
-   "x": 276.0,
-   "y": 738.0,
-   "w": 536,
-   "h": 432.0,
+   "x": 222.0,
+   "y": 742.0,
+   "w": 610.0,
+   "h": 418.0,
    "count": 14,
    "primary": [
     "Quads",
@@ -1102,25 +1102,35 @@
    "kind": "power_rack",
    "parts": [
     {
-     "x": 436.0,
-     "y": 738.0,
-     "w": 376.0,
-     "h": 92.0,
-     "count": 6,
-     "cols": 6,
+     "x": 440.0,
+     "y": 742.0,
+     "w": 366.0,
+     "h": 112.0,
+     "count": 4,
+     "cols": 4,
      "gap": 12,
      "flip": true
     },
     {
-     "x": 276.0,
-     "y": 1078.0,
-     "w": 501.3,
-     "h": 92.0,
-     "count": 8,
-     "cols": 8,
+     "x": 440.0,
+     "y": 860.0,
+     "w": 366.0,
+     "h": 112.0,
+     "count": 4,
+     "cols": 4,
+     "gap": 12
+    },
+    {
+     "x": 222.0,
+     "y": 1010.0,
+     "w": 610.0,
+     "h": 150.0,
+     "count": 6,
+     "cols": 6,
      "gap": 12
     }
-   ]
+   ],
+   "drawnNote": "Drawn as 14 racks filling the section; exact rack positions approximate."
   },
   {
    "id": "L1-31",
