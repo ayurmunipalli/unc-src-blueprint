@@ -160,7 +160,9 @@
     }
     return { g: g, cells: cells };
   }
-  function Glyph(cell, g, key) {
+  function Glyph(cell, g, key, orient) {
+    /* orient 'h': always draw the long axis left-right, centred in the cell (e.g. benches facing a rack) */
+    if (orient === 'h' && cell.w < cell.h * g.ar) { var fh = Math.min(cell.h, cell.w / g.ar); cell = { x: cell.x, y: cell.y + (cell.h - fh) / 2, w: cell.w, h: fh }; }
     var land = cell.w >= cell.h, W = land ? cell.w : cell.h, H = land ? cell.h : cell.w;
     var tf = land ? 'translate(' + cell.x + ' ' + cell.y + ')' : 'translate(' + (cell.x + cell.w) + ' ' + cell.y + ') rotate(90)';
     return h('g', { key: key, transform: tf }, g.d(W, H).map(function (e, i) { return h(e[0], Object.assign({ key: i }, e[1])); }));
@@ -177,7 +179,7 @@
     },
       h('rect', { className: 'hit', x: m.x, y: m.y, width: m.w, height: m.h }),
       h('rect', { className: 'pad', x: m.x - 2 * k, y: m.y - 2 * k, width: m.w + 4 * k, height: m.h + 4 * k }),
-      lay.cells.map(function (c, i) { return Glyph(c, lay.g, i); }),
+      lay.cells.map(function (c, i) { return Glyph(c, lay.g, i, m.orient); }),
       p.showCode ? h('text', { className: 'lbl', x: m.x + m.w / 2, y: m.y + m.h / 2 + 4 * k, textAnchor: 'middle' }, m.id.slice(-2) + (m.count > 1 ? ' ×' + m.count : '')) : null
     );
   }

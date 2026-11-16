@@ -1169,10 +1169,10 @@
    "floor": "1",
    "name": "Dumbbells & Free Weights",
    "zone": "free",
-   "x": 852.5,
-   "y": 287.5,
-   "w": 120.0,
-   "h": 600.0,
+   "x": 962.0,
+   "y": 290.0,
+   "w": 42.0,
+   "h": 590.0,
    "count": 1,
    "primary": [
     "Chest",
@@ -1212,9 +1212,9 @@
    "floor": "1",
    "name": "Free-Weight Benches",
    "zone": "free",
-   "x": 816.0,
+   "x": 850.0,
    "y": 300.0,
-   "w": 32.0,
+   "w": 92.0,
    "h": 570.0,
    "count": 6,
    "approxCount": true,
@@ -1227,7 +1227,8 @@
     "Back",
     "Biceps"
    ],
-   "kind": "flat_bench"
+   "kind": "flat_bench",
+   "orient": "h"
   },
   {
    "id": "L2-01",

@@ -65,7 +65,7 @@ button { font: inherit; color: inherit; }
 .toggle { display: inline-flex; align-items: center; gap: 6px; font: 500 12px/16px var(--font-mono); color: var(--ink-muted); cursor: pointer; }
 .toggle input { accent-color: var(--accent); margin: 0; }
 
-.plan-scroll { border: 1px solid var(--grid-major); overflow: auto; max-height: calc(100dvh - 150px); -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+.plan-scroll { border: 1px solid var(--grid-major); overflow: auto; max-height: calc(100dvh - 150px); -webkit-overflow-scrolling: touch; }
 .plan { position: relative; background: var(--paper); }
 .plan svg { display: block; width: 100%; height: auto; max-height: calc(100dvh - 152px); min-height: 240px; }
 .plan-scroll.zoomed .plan svg { max-height: none; }
@@ -221,7 +221,7 @@ a.vid:hover .vframe { border-color: var(--highlight); color: var(--highlight); }
   .h1 { font-size: 26px; line-height: 30px; }
   .legend { margin-left: 0; }
   .sheet-bar { gap: 8px; }
-  .plan-scroll { max-height: 72dvh; }
+  .plan-scroll { max-height: 58dvh; }
   .row { grid-template-columns: 46px minmax(0, 1fr) auto; gap: 10px; }
   .vid { grid-template-columns: 72px minmax(0, 1fr); }
 }
@@ -381,7 +381,9 @@ function layout(m, k) {
   }
   return { g: g, cells: cells };
 }
-function Glyph(cell, g, key) {
+function Glyph(cell, g, key, orient) {
+  /* orient 'h': always draw the long axis left-right, centred in the cell (e.g. benches facing a rack) */
+  if (orient === 'h' && cell.w < cell.h * g.ar) { var fh = Math.min(cell.h, cell.w / g.ar); cell = { x: cell.x, y: cell.y + (cell.h - fh) / 2, w: cell.w, h: fh }; }
   var land = cell.w >= cell.h, W = land ? cell.w : cell.h, H = land ? cell.h : cell.w;
   var tf = land ? 'translate(' + cell.x + ' ' + cell.y + ')' : 'translate(' + (cell.x + cell.w) + ' ' + cell.y + ') rotate(90)';
   return h('g', { key: key, transform: tf }, g.d(W, H).map(function (e, i) { return h(e[0], Object.assign({ key: i }, e[1])); }));
@@ -397,7 +399,7 @@ function Marker(p) {
   },
     h('rect', { className: 'hit', x: m.x, y: m.y, width: m.w, height: m.h }),
     h('rect', { className: 'pad', x: m.x - 2 * k, y: m.y - 2 * k, width: m.w + 4 * k, height: m.h + 4 * k }),
-    lay.cells.map(function (c, i) { return Glyph(c, lay.g, i); }),
+    lay.cells.map(function (c, i) { return Glyph(c, lay.g, i, m.orient); }),
     p.codes ? h('text', { className: 'lbl', x: m.x + m.w / 2, y: m.y + m.h / 2 + 4 * k, textAnchor: 'middle' }, m.id.slice(-2) + (m.count > 1 ? ' ×' + m.count : '')) : null
   );
 }
@@ -669,7 +671,7 @@ function App() {
   var sp = useState(load('split', 'ppl')), split = sp[0], setSplitS = sp[1];
   var dy = useState(0), day = dy[0], setDay = dy[1];
   var cs = useState(load('codes', false)), codes = cs[0], setCodes = cs[1];
-  function zoomFor(fl) { var w = window.innerWidth || 1200; return w < 700 ? (fl === '2' ? 2.25 : 1.4) : 1; }
+  function zoomFor(fl) { var w = window.innerWidth || 1200; return w < 700 && fl === '2' ? 2.25 : 1; }
   var zs = useState(zoomFor('1')), zoom = zs[0], setZoom = zs[1];
   function changeFloor(fl) { setFloor(fl); setZoom(zoomFor(fl)); }
 
