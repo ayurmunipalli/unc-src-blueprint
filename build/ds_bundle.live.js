@@ -128,7 +128,7 @@
     ghr: { ar: 2.2, d: function (W, H) { return [R(0, H * .44, W, H * .12, 'f'), R(W * .04, H * .2, W * .5, H * .6, 'b', H * .3), R(W * .58, H * .24, W * .1, H * .52, 'b', 2), C(W * .78, H * .34, H * .11, 'b'), C(W * .78, H * .66, H * .11, 'b'), R(W * .88, H * .2, W * .06, H * .6, 's', 1)]; } },
     roman_chair: { ar: 2.2, d: function (W, H) { return [R(0, H * .3, W, H * .4, 'f'), R(W * .1, H * .18, W * .32, H * .64, 'b', H * .18), C(W * .7, H * .32, H * .12, 'b'), C(W * .7, H * .68, H * .12, 'b'), R(W * .82, H * .18, W * .06, H * .64, 's', 1), L(W * .1, H * .08, W * .42, H * .08, 'bar'), L(W * .1, H * .92, W * .42, H * .92, 'bar')]; } },
     bench_press: { ar: 1.8, d: function (W, H) { var p = Math.min(W, H) * .1; return [R(W * .32, H * .38, W * .64, H * .24, 'b', 2), R(W * .2 - p / 2, H * .2 - p / 2, p, p, 's'), R(W * .2 - p / 2, H * .8 - p / 2, p, p, 's'), L(W * .24, H * .02, W * .24, H * .98, 'bar'), R(W * .2, H * .06, W * .08, H * .09, 's'), R(W * .2, H * .85, W * .08, H * .09, 's'), L(W * .32, H * .5, W * .2, H * .5, 'f')]; } },
-    power_rack: { ar: 1.3, d: function (W, H) { var p = Math.min(W, H) * .1; return [R(0, 0, W, H, 'f'), R(W * .18, H * .12, W * .62, H * .76, 'd'), R(W * .18 - p / 2, H * .12 - p / 2, p, p, 's'), R(W * .8 - p / 2, H * .12 - p / 2, p, p, 's'), R(W * .18 - p / 2, H * .88 - p / 2, p, p, 's'), R(W * .8 - p / 2, H * .88 - p / 2, p, p, 's'), L(W * .3, H * .02, W * .3, H * .98, 'bar'), R(W * .26, H * .03, W * .08, H * .08, 's'), R(W * .26, H * .89, W * .08, H * .08, 's')]; } },
+    power_rack: { ar: 1.45, d: function (W, H) { var p = Math.min(W, H) * .11; return [R(0, 0, W, H, 'f', 1), R(W * .2, H * .12, W * .5, H * .76, 'd'), R(W * .2 - p / 2, H * .12 - p / 2, p, p, 's'), R(W * .2 - p / 2, H * .88 - p / 2, p, p, 's'), R(W * .7 - p / 2, H * .12 - p / 2, p, p, 's'), R(W * .7 - p / 2, H * .88 - p / 2, p, p, 's'), L(W * .27, H * .03, W * .27, H * .97, 'bar'), R(W * .23, H * .0, W * .08, H * .1, 's', 1), R(W * .23, H * .9, W * .08, H * .1, 's', 1), L(W * .7, H * .5, W * .92, H * .5, 'f')]; } },
     dip_station: { ar: 2, d: function (W, H) { return [R(W * .04, H * .14, W * .92, H * .72, 'f'), L(W * .1, H * .32, W * .9, H * .32, 'bar'), L(W * .1, H * .68, W * .9, H * .68, 'bar'), C(W * .1, H * .32, H * .07, 's'), C(W * .9, H * .32, H * .07, 's'), C(W * .1, H * .68, H * .07, 's'), C(W * .9, H * .68, H * .07, 's')]; } },
     dumbbells: { ar: 4, d: function (W, H) {
       var rows = H > W * .38 ? 2 : 1, o = [];
@@ -154,7 +154,7 @@
       var ar = Math.max(cw, ch) / Math.min(cw, ch), score = Math.abs(Math.log(ar / g.ar)) + (r * c - n) * 0.3;
       if (!best || score < best.score) best = { score: score, c: c, r: r, cw: cw, ch: ch };
     }
-    var cells = [], inset = n > 1 ? Math.min(2.5 * k, 0.12 * Math.min(best.cw, best.ch)) : 0;
+    var cells = [], inset = m.gap != null ? m.gap / 2 : n > 1 ? Math.min(2.5 * k, 0.12 * Math.min(best.cw, best.ch)) : 0;
     for (var i = 0; i < n; i++) {
       var col = i % best.c, row = Math.floor(i / best.c);
       cells.push({ x: m.x + col * best.cw + inset, y: m.y + row * best.ch + inset, w: best.cw - inset * 2, h: best.ch - inset * 2 });
@@ -165,7 +165,7 @@
     /* a station may be split into several areas (parts), e.g. a front row and a back row of racks */
     if (!m.parts) { var one = layoutBox(m, k); one.boxes = [m]; return one; }
     var out = { g: G[m.kind] || G.dumbbells, cells: [], boxes: [] };
-    m.parts.forEach(function (pt) { var b = Object.assign({}, m, pt, { parts: null }); out.cells = out.cells.concat(layoutBox(b, k).cells); out.boxes.push(b); });
+    m.parts.forEach(function (pt) { var b = Object.assign({}, m, pt, { parts: null }); out.cells = out.cells.concat(layoutBox(b, k).cells.map(function (c) { c.flip = b.flip; return c; })); out.boxes.push(b); });
     return out;
   }
   function Glyph(cell, g, key, orient, flip) {
@@ -196,7 +196,7 @@
     },
       lay.boxes.map(function (b, i) { return h('rect', { key: 'h' + i, className: 'hit', x: b.x, y: b.y, width: b.w, height: b.h }); }),
       lay.boxes.map(function (b, i) { return h('rect', { key: 'p' + i, className: 'pad', x: b.x - 2 * k, y: b.y - 2 * k, width: b.w + 4 * k, height: b.h + 4 * k }); }),
-      lay.cells.map(function (c, i) { return Glyph(c, lay.g, i, m.orient, m.flip); }),
+      lay.cells.map(function (c, i) { return Glyph(c, lay.g, i, m.orient, c.flip != null ? c.flip : m.flip); }),
       p.showCode ? h('text', { className: 'lbl', x: m.x + m.w / 2, y: m.y + m.h / 2 + 4 * k, textAnchor: 'middle' }, m.id.slice(-2) + (m.count > 1 ? ' ×' + m.count : '')) : null
     );
   }
