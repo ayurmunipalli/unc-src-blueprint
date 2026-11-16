@@ -437,10 +437,16 @@ function Plan(p) {
   var scroller = useRef(null);
   useEffect(function () { setTip(null); }, [p.floor]);
   useEffect(function () {
-    var sc = scroller.current; if (!sc || !p.selected || p.zoom <= 1) return;
+    var sc = scroller.current; if (!sc || !p.selected) return;
     var el = sc.querySelector('[data-id="' + p.selected + '"]'); if (!el) return;
     var r = el.getBoundingClientRect(), b = sc.getBoundingClientRect();
-    sc.scrollTo({ left: sc.scrollLeft + r.left - b.left - b.width / 2 + r.width / 2, top: sc.scrollTop + r.top - b.top - b.height / 2 + r.height / 2, behavior: 'smooth' });
+    if (p.zoom > 1) sc.scrollTo({ left: sc.scrollLeft + r.left - b.left - b.width / 2 + r.width / 2, top: sc.scrollTop + r.top - b.top - b.height / 2 + r.height / 2, behavior: 'smooth' });
+    /* phones: the card slides up over the lower ~62% of the screen, so scroll the page to keep the machine visible above it */
+    if (window.innerWidth <= 960) {
+      var top = document.querySelector('.top'), hb = top ? top.getBoundingClientRect().bottom : 0, vis = window.innerHeight * 0.38;
+      var cy = Math.min(Math.max(r.top + r.height / 2, b.top), b.bottom);
+      if (cy < hb + 8 || cy > vis - 8) window.scrollBy({ top: cy - (hb + vis) / 2, behavior: 'smooth' });
+    }
   }, [p.selected, p.floor, p.zoom]);
   function enter(m, e) {
     var r = e.currentTarget.getBoundingClientRect(), w = wrap.current.getBoundingClientRect();
